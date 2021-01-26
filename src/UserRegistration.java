@@ -27,10 +27,18 @@ public class UserRegistration {
             return "INVALID";
         }
     }
+    public String passwordValidation(String password) {
+
+        if(Pattern.matches("^[a-zA-Z0-9_-]{8}$",password)) {
+            return "VALID";
+        } else {
+            return "INVALID";
+        }
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String validation;
-        System.out.println("ENTER CHOICE \n1:FIRST NAME VALIDATION\n2:LAST NAME VALIDATION\n3:EMAIL VALIDATION\n4:MOBILE NUMBER VALIDATION ");
+        System.out.println("ENTER CHOICE \n1:FIRST NAME VALIDATION\n2:LAST NAME VALIDATION\n3:EMAIL VALIDATION\n4:MOBILE NUMBER VALIDATION\n5:PASSWORD VALIDATION ");
         int choice = scanner.nextInt();
         UserRegistration userRegistration = new UserRegistration();
         switch(choice) {
@@ -57,6 +65,12 @@ public class UserRegistration {
                 String mobile_Number = scanner.next();
                 validation = userRegistration.mobileNumberValidation(mobile_Number);
                 System.out.println(validation + " MOBILE NUMBER");
+                break;
+            case 5:
+                System.out.println("ENTER PASSWORD WITH MINIMUM 8 CHARARCTERS");
+                String password = scanner.next();
+                validation = userRegistration.passwordValidation(password);
+                System.out.println(validation + " PASSWORD");
                 break;
         }
         }
