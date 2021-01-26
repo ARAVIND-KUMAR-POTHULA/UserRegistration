@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
@@ -12,17 +13,24 @@ public class UserRegistration {
     }
 
     public String emailValidation(String email) {
-        if(Pattern.matches("^[a-zA-Z0-9_-]+[.]?[a-zA-Z0-9]*@[a-zA-Z0-9-]+\\.[a-zA-Z0-9_-]+[.]*[a-zA-Z0-9_-]*$",email)) {
+        if(Pattern.matches("^[a-zA-Z0-9_-]+[.]*[a-zA-Z0-9]*@[a-zA-Z0-9-]+\\.[a-zA-Z0-9_-]+[.]*[a-zA-Z0-9_-]*$",email)) {
             return "VALID";
         } else {
             return "INVALID";
         }
     }
+    public String mobileNumberValidation(String mobile_Number) {
 
+        if(Pattern.matches("^91[ ]\\d{10}$",mobile_Number)) {
+            return "VALID";
+        } else {
+            return "INVALID";
+        }
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String validation;
-        System.out.println("ENTER CHOICE \n1:FIRST NAME VALIDATION\n2:LAST NAME VALIDATION\n3:EMAIL VALIDATION ");
+        System.out.println("ENTER CHOICE \n1:FIRST NAME VALIDATION\n2:LAST NAME VALIDATION\n3:EMAIL VALIDATION\n4:MOBILE NUMBER VALIDATION ");
         int choice = scanner.nextInt();
         UserRegistration userRegistration = new UserRegistration();
         switch(choice) {
@@ -43,6 +51,12 @@ public class UserRegistration {
                 String email_Id = scanner.next();
                 validation = userRegistration.emailValidation(email_Id);
                 System.out.println(validation + " EMAIL ID");
+                break;
+            case 4:
+                System.out.println("ENTER MOBILE NUMBER");
+                String mobile_Number = scanner.next();
+                validation = userRegistration.mobileNumberValidation(mobile_Number);
+                System.out.println(validation + " MOBILE NUMBER");
                 break;
         }
         }
