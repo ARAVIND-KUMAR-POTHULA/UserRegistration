@@ -29,7 +29,7 @@ public class UserRegistration {
     }
     public String passwordValidation(String password) {
 
-        if(Pattern.matches("^[a-zA-Z0-9_-]{8}$",password)) {
+        if(Pattern.matches("(([a-z0-9_-]*)([A-Z]+)){8,}",password)) {
             return "VALID";
         } else {
             return "INVALID";
