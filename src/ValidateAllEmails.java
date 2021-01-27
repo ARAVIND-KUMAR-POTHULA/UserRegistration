@@ -35,13 +35,18 @@ public class ValidateAllEmails {
                 { "abc+100@gmail.com", true },
                 { "abc@gmail.com.com", true },
                 {"abc100@abc.net", true },
-                { "abc-100@yahoo.com",false } } );
+                { "abc-100@yahoo.com",true} } );
     }
     @Test
     public void givenEmailAsVar_ShouldReturnAsPerParametrizedResult() {
         UserRegistration validator = new UserRegistration();
-        boolean Result = validator.emailValidation(this.allEmails);
-        Assert.assertEquals(this.resultExp, Result);
+        try {
+            boolean Result = validator.emailValidation(this.allEmails);
+            Assert.assertEquals(this.resultExp, Result);
+        }catch (UserRegistrationException exception) {
+            exception.printStackTrace();
+            Assert.assertEquals("Please Enter Proper email", exception.getMessage());
+        }
     }
 }
 
