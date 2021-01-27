@@ -19,8 +19,8 @@ public class UserRegistrationTest {
     @Test
     public void WhenProperEmail_Should_PassTheTestCase() {
         UserRegistration userRegistration = new UserRegistration();
-        String validation = userRegistration.emailValidation("abc.bn@google.com");
-        Assert.assertEquals("VALID",validation);
+        boolean validation = userRegistration.emailValidation("abc.bn@google.com");
+        Assert.assertEquals(true,validation);
     }
     @Test
     public void WhenProperMobileNumber_Should_PassTheTestCase() {

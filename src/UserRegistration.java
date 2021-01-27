@@ -12,11 +12,11 @@ public class UserRegistration {
         }
     }
 
-    public String emailValidation(String email) {
-        if(Pattern.matches("^[a-zA-Z0-9_-]+[.]*[a-zA-Z0-9]*@[a-zA-Z0-9-]+\\.[a-zA-Z0-9_-]+[.]*[a-zA-Z0-9_-]*$",email)) {
-            return "VALID";
+    public boolean emailValidation(String email) {
+        if(Pattern.matches("^[0-9a-zA-Z]+([.\\\\-_+][0-9a-zA-Z]+)*@[a-z0-9A-Z]+.[a-z]{2,4}([.][a-zA-Z]{2,})*$",email)) {
+            return true;
         } else {
-            return "INVALID";
+            return false;
         }
     }
     public String mobileNumberValidation(String mobile_Number) {
